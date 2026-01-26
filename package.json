@@ -1,0 +1,19 @@
+{
+  "name": "entropy-garden",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@fontsource/arvo": "^5.2.7",
+    "@types/luxon": "^3.7.1",
+    "astro": "^5.16.15",
+    "luxon": "^3.7.2",
+    "normalize.css": "^8.0.1",
+    "p5": "^2.2.0"
+  }
+}

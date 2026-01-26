@@ -1,0 +1,45 @@
+---
+import DefaultLayout from "../layouts/DefaultLayout.astro";
+import type SketchInfo from "@lib/sketch_info";
+import { DateTime } from "luxon";
+
+interface SproutPage {
+  url: URL;
+  meta: SketchInfo;
+}
+
+const modules = import.meta.glob<SproutPage>("./sprouts/**/*.astro", {
+  eager: true,
+});
+const sprouts: SproutPage[] = Object.values(modules);
+
+function date_to_string(date_string: string): string {
+  let date = DateTime.fromFormat(date_string, "yyyy-MM-dd", {
+    zone: "America/Phoenix",
+  });
+  return date.toFormat("MMM d, yyyy");
+}
+---
+
+<DefaultLayout title="index">
+  <h1>Entropy Garden</h1>
+  <h2>Sprouts</h2>
+  <ul>
+    {
+      sprouts.map((sprout) => (
+        <li>
+          <div class="sprout-card">
+            <a href={sprout.url}>{sprout.meta.name}</a>
+            <p>{sprout.meta.description}</p>
+            <p>{date_to_string(sprout.meta.date)}</p>
+            <ul>
+              {(sprout.meta.tags || []).map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</DefaultLayout>

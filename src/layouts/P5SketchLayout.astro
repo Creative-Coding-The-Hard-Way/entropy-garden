@@ -1,0 +1,71 @@
+---
+/// Default layout for sketches.
+/// Sketches should define themselves within <script> tags and can
+/// install p5 by looking for the p5sketch id tag via
+/// `document.getElementById("p5sketch")`.
+
+import type SketchInfo from "@lib/sketch_info";
+import DefaultLayout from "./DefaultLayout.astro";
+
+export interface Props {
+  meta: SketchInfo;
+}
+
+const { meta } = Astro.props;
+---
+
+<DefaultLayout title={meta.name}>
+  <Fragment slot="header">
+    <div>
+      <ul class="tags">
+        {meta.tags.map((tag) => <li>{tag}</li>)}
+      </ul>
+    </div>
+  </Fragment>
+
+  <div id="p5sketch"></div>
+  <slot />
+
+  <Fragment slot="footer"> </Fragment>
+</DefaultLayout>
+
+<style>
+  #p5sketch {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    canvas {
+      display: block;
+      box-shadow: rgba(0, 0, 0, 0.45) 0.2rem 0.2rem 0.8rem 0.4rem;
+    }
+  }
+
+  .tags {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 25ch;
+    font-size: var(--fs-300);
+
+    text-transform: uppercase;
+
+    margin: 0px;
+    padding: 0px;
+
+    li {
+      margin-block: 0.25em;
+      margin-inline: 1em;
+      padding-block: 0.125em;
+      padding-inline: 0.65em;
+
+      border-radius: 1em;
+
+      background-color: var(--teal);
+      font-weight: 500;
+      color: var(--black);
+    }
+  }
+</style>

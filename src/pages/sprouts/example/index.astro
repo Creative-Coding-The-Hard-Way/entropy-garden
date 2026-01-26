@@ -1,0 +1,19 @@
+---
+import type SketchInfo from "../../../lib/sketch_info";
+export const meta: SketchInfo = {
+  tags: ["sprout", "example", "another", "value"],
+  description: "An example sketch page with a short description.",
+  name: "Example",
+  date: "2026-01-25",
+};
+
+import P5SketchLayout from "@layouts/P5SketchLayout.astro";
+---
+
+<P5SketchLayout meta={meta}>
+  <script>
+    import p5 from "p5";
+    import { sketch } from "./sketch.ts";
+    new p5(sketch, document.getElementById("p5sketch")!);
+  </script>
+</P5SketchLayout>

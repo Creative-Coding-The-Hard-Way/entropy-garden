@@ -1,0 +1,107 @@
+---
+import "normalize.css/normalize.css";
+import "@assets/global.css";
+
+import "@fontsource/arvo";
+import { Image } from "astro:assets";
+import EntropyGarden from "@assets/entropy-garden.png";
+
+const { title } = Astro.props;
+
+function page_title() {
+  if (title) {
+    return `Entropy Garden: ${title}`;
+  } else {
+    return `Entropy Garden`;
+  }
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/entropy-garden.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{page_title()}</title>
+    <slot name="head" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h2>Navigation</h2>
+        <a href={import.meta.env.BASE_URL}>
+          <Image
+            class="logo"
+            src={EntropyGarden}
+            alt="entropy-garden: home link"
+            width="256"
+            height="256"
+          />
+        </a>
+      </nav>
+      <p class="page-name">{page_title()}</p>
+      <div>
+        <slot name="header" />
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <slot name="footer" />
+    </footer>
+  </body>
+</html>
+
+<style>
+  :root {
+    color: white;
+    font-family: Arvo;
+  }
+
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(2rem, auto) 1fr minmax(2rem, auto);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    background: grey;
+  }
+
+  header {
+    color: var(--orange);
+    background: var(--black);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.5) 0.1rem 0.1rem 0.4rem 0.2rem;
+    z-index: 1;
+
+    h2 {
+      display: none;
+    }
+
+    .site-title {
+      padding: 0rem;
+      margin: 0rem;
+    }
+  }
+
+  main {
+    background: var(--teal);
+  }
+
+  footer {
+    background: var(--black);
+  }
+
+  .logo {
+    width: var(--fs-700);
+    height: var(--fs-700);
+  }
+</style>
