@@ -1,0 +1,33 @@
+name: Deploy to Github Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow-dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+job:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+
+      - name: Astro Deploy
+        uses: withastro/action@v5.1.0
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
