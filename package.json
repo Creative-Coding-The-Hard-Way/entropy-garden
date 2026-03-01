@@ -15,5 +15,8 @@
     "luxon": "^3.7.2",
     "normalize.css": "^8.0.1",
     "p5": "^2.2.0"
+  },
+  "devDependencies": {
+    "@fontsource/signika": "^5.2.8"
   }
 }

@@ -16,11 +16,9 @@ const { meta } = Astro.props;
 
 <DefaultLayout title={meta.name}>
   <Fragment slot="header">
-    <div>
-      <ul class="tags">
-        {meta.tags.map((tag) => <li>{tag}</li>)}
-      </ul>
-    </div>
+    <ul class="tags">
+      {meta.tags.map((tag) => <li>{tag}</li>)}
+    </ul>
   </Fragment>
 
   <div id="p5sketch"></div>

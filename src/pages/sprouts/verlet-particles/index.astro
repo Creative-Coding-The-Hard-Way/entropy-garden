@@ -1,0 +1,19 @@
+---
+import type SketchInfo from "../../../lib/sketch_info";
+export const meta: SketchInfo = {
+  tags: ["Physics"],
+  description: "Simple particle system based on Verlet integration.",
+  name: "Verlet Particles",
+  date: "2026-01-25",
+};
+
+import P5SketchLayout from "@layouts/P5SketchLayout.astro";
+---
+
+<P5SketchLayout meta={meta}>
+  <script>
+    import p5 from "p5";
+    import { sketch } from "./_src/sketch.ts";
+    new p5(sketch, document.getElementById("p5sketch")!);
+  </script>
+</P5SketchLayout>

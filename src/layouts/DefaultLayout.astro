@@ -2,7 +2,7 @@
 import "normalize.css/normalize.css";
 import "@assets/global.css";
 
-import "@fontsource/arvo";
+import "@fontsource/signika";
 import { Image } from "astro:assets";
 import EntropyGarden from "@assets/entropy-garden.png";
 
@@ -27,8 +27,9 @@ function page_title() {
   </head>
   <body>
     <header>
+      <h1 class="screen-reader-only">Entropy Garden</h1>
       <nav>
-        <h2>Navigation</h2>
+        <h2 class="screen-reader-only">Navigation</h2>
         <a href={import.meta.env.BASE_URL}>
           <Image
             class="logo"
@@ -81,10 +82,6 @@ function page_title() {
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.5) 0.1rem 0.1rem 0.4rem 0.2rem;
     z-index: 1;
-
-    h2 {
-      display: none;
-    }
 
     .site-title {
       padding: 0rem;

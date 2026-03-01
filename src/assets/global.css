@@ -10,8 +10,8 @@
    * Typography
    *************************************************************************/
 
-  --ff-normal: "Arvo", serif;
-  --ff-title: "Arvo", serif;
+  --ff-normal: "Signika", serif;
+  --ff-title: "Signika", serif;
 
   --mult: 1.618;
   --inv: 0.618;
@@ -103,7 +103,7 @@ h6 {
 
 h1,
 h2 {
-  font-size: var(--fs-700);
+  font-size: var(--fs-600);
   font-weight: 400;
 }
 
@@ -120,4 +120,14 @@ img {
   object-fit: cover;
   max-width: 100%;
   height: auto;
+}
+
+.screen-reader-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

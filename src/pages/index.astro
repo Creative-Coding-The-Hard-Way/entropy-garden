@@ -24,22 +24,49 @@ function date_to_string(date_string: string): string {
 <DefaultLayout title="index">
   <h1>Entropy Garden</h1>
   <h2>Sprouts</h2>
-  <ul>
+  <ul class="sprout-index">
     {
       sprouts.map((sprout) => (
         <li>
-          <div class="sprout-card">
-            <a href={sprout.url}>{sprout.meta.name}</a>
+          <a href={sprout.url} class="sprout-card">
+            <p class="sprout-card-name">
+              {sprout.meta.name} - {date_to_string(sprout.meta.date)}
+            </p>
             <p>{sprout.meta.description}</p>
-            <p>{date_to_string(sprout.meta.date)}</p>
             <ul>
               {(sprout.meta.tags || []).map((tag) => (
-                <li>{tag}</li>
+                <li>
+                  <p>{tag}</p>
+                </li>
               ))}
             </ul>
-          </div>
+          </a>
         </li>
       ))
     }
   </ul>
 </DefaultLayout>
+
+<style>
+  .sprout-index {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--fs-400) 1rem;
+  }
+
+  .sprout-card {
+    text-decoration: none;
+    color: white;
+    display: block;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: var(--fs-400);
+    padding-block: calc(var(--fs-400) * 0.5);
+    padding-inline: var(--fs-400);
+
+    .sprout-card-name {
+      text-decoration: none;
+      color: white;
+    }
+  }
+</style>

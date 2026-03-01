@@ -8,6 +8,14 @@ export class Vec2 {
   }
 
   /**
+   * Sets this vector's x and y coordinates to the provided value.
+   */
+  set(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+
+  /**
    * Clones the vector.
    **/
   clone(): Vec2 {
